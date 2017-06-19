@@ -1,0 +1,32 @@
+<% layout('layout') -%>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/addanswer.js"></script>
+<div>
+  <h2>Question: <%= question %></h2>
+</div>
+<div>
+  <h3>Answers</h3>
+
+  <% if(aget.length==0){%>
+    <div><h4>No Answers yet.</h4></div>
+  <% }else{for(var i =0;i<aget.length;i++){ %>
+    <div class="answer" style="padding-right:300px"><p><h4>A<%=i+1%></h4><%=aget[i]%></p> </div>
+
+<%  }}%>
+  <textarea id="ansText" style="white-space:pre" rows="8" required class="form-control"> </textarea>
+  <button style="background-color:#ff4040" id="ansButton" class="btn btn-primary">Answer</button>
+</div>
+<div  id="ansfeedback" class="modal fade" role="dialog" aria-hidden="true">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                       <div style="background: #ff4040;color:#fff" class="modal-header">
+                               <b>Message</b>
+                       </div>
+                        <div class="modal-body">
+                          <p id="statusofsubmit">S</p>
+
+                       </div>
+
+                   </div>
+               </div>
+</div>

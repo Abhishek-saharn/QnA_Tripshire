@@ -1,0 +1,11 @@
+<% layout('layout') -%>
+<div>
+<h2>Questions</h2>
+</div>
+<div>
+<% for(var i=0;i< qs.length;i++){%>
+  <div class="questions">
+  <h4>  <a style="text-decoration:none" onclick="javascript:addURL(this)" href='/answers/' data-id='<%= qs[i]._id %>'>Q. <%= qs[i].question %></a></h4>
+  </div>
+  <%}%>
+</div>

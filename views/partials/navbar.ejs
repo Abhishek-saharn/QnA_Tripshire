@@ -1,0 +1,40 @@
+<nav style="background-color:#ff4040;" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a style="color:#fff" class="navbar-brand" href="#">Queries and Sols</a>
+        </div>
+        <div id="navbar" class="navbar-collapse navbar-form navbar-right collapse">
+          <a href="/" class="btn btn-default">Questions</a>
+            <button id='askbutton' class="btn btn-success">Ask a Question</button>
+
+
+
+
+        </div><!--/.navbar-collapse -->
+
+      </div>
+      <div  id="askmodal" class="modal fade" role="dialog" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div style="background: #ff4040;color:#fff" class="modal-header">
+                         <b>Ask your question</b>
+                 </div>
+                  <div class="modal-body">
+
+                    <textarea id="askText" style="white-space:pre" rows="4" required class="form-control"> </textarea>
+
+                 </div>
+                  <div id="modal-footer"  class="modal-footer">
+                       <button type="button" id='askbutton2' class="btn btn-success">Ask</button>
+                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+    </nav>
