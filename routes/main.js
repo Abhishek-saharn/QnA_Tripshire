@@ -1,10 +1,17 @@
 var router = require('express').Router();
+var passport = require('passport');
+var passportConf = require('../config/passport');
 
 var Question = require('../models/question');
 var Answer = require('../models/answer');
 
 
 router.route('/')
+      .get(function(req,res){
+        res.render('main/login');
+      });
+
+router.route('/home')
       .get(function(req,res){
         res.render('main/home');
       });
@@ -21,6 +28,7 @@ router.route('/saveQuestion')
 
                 }
         });
+
 
       });
 
@@ -59,5 +67,10 @@ router.route('/answers/:aid')
 
       });
 
-
+  router.get('/auth/facebook',passport.authenticate('facebook',{scope:'email'}) );
+  router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    failureRedirect: '/login'
+  }),function(req, res) {
+      res.redirect('/home');
+   });
 module.exports = router;

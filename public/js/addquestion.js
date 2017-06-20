@@ -11,7 +11,7 @@ $(document).on('click','#askbutton2', function(){
     .done(function(data){
           if(data.status=="Success")
           {alert("Question added");
-                 window.location.href = "/";
+                 window.location.href = "/home";
 
             }
     })

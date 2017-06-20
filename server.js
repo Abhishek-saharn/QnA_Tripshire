@@ -5,6 +5,7 @@ var secret = require('./config/secret');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var engine = require('ejs-mate');
+var passport = require('passport');
 
 
 var app=express();
@@ -19,9 +20,19 @@ mongoose.connect(secret.database,function(err){
     }
 });
 
+
 app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
+app.use(passport.initialize());
+
+app.use(function(req,res,next)
+{
+  res.locals.user=req.user;
+  console.log(req.user);
+  next();
+});
+
 
 var Question = require('./models/question');
 var Answer = require('./models/answer');
