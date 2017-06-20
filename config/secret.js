@@ -10,8 +10,8 @@ module.exports = {
     callbackURL:'https://queriesnsols.herokuapp.com/auth/facebook/callback',
   },
   google: {
-    clientID :'1022620327825-aoh6hmju96dldtakuau0apcm2mt91nrt.apps.googleusercontent.com',
-    clientSecret:'xNOH7OHrhCggRBuAE-nR-Zop',
+    clientID :'1022620327825-9rqpq8flgsu1d9o3gjhrm27oqr7n3no6.apps.googleusercontent.com',
+    clientSecret:'lYTtCLQ_lLcsBjCQ0E35CCtX',
     callbackURL: "https://queriesnsols.herokuapp.com/auth/google/callback",
    passReqToCallback   : true
 
