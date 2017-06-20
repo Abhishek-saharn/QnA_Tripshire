@@ -6,7 +6,7 @@ module.exports = {
     clientID :process.env.FACEBOOK_ID||'111528899460454',
     clientSecret : process.env.FACEBOOK_SECRET ||'cd27a0cb56cf84b720a4fac64e3b2463',
     fiels: ['emails','displayName'],
-    callbackURL:'http://localhost:3000/auth/facebook/callback',
+    callbackURL:'https://queriesnsols.herokuapp.com/auth/facebook/callback',
   }
 
 
