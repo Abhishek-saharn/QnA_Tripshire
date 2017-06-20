@@ -6,11 +6,10 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var engine = require('ejs-mate');
 var passport = require('passport');
+var session = require('express-session');
+var cp = require('cookie-parser');
+var MongoStore = require('connect-mongo')(session);
 
-
-var app=express();
-
-app.use(morgan('dev'));
 
 mongoose.connect(secret.database,function(err){
     if(err){
@@ -21,21 +20,35 @@ mongoose.connect(secret.database,function(err){
 });
 
 
-app.use(express.static(__dirname+'/public'));
+
+var app=express();
+
+
+
+app.use(morgan('dev'));
+app.use(cp());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
-app.use(passport.initialize());
+app.use(session({ secret: secret.secretKey, resave: true, saveUninitialized: true,store: new MongoStore({url:secret.database,autoReconnect: true}) }));
 
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(function(req,res,next)
 {
   res.locals.user=req.user;
-  console.log(req.user);
   next();
 });
+
+app.use(express.static(__dirname+'/public'));
+
+
+
 
 
 var Question = require('./models/question');
 var Answer = require('./models/answer');
+var User = require('./models/user');
 app.use(function(req,res,next){
     Question.find({},function(err,questions){
       if(err)return next(err);
@@ -49,6 +62,7 @@ app.set('view engine','ejs');
 
 var mainRoutes = require('./routes/main');
 app.use(mainRoutes);
+
 
 
 

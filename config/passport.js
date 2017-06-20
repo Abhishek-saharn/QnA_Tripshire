@@ -4,7 +4,9 @@ var secret = require('../config/secret');
 var User = require('../models/user');
 
 passport.serializeUser(function(user,done){
-  done(null,user._id);
+  console.log('InSU'+user);
+  done(null,user);
+
 });
 
 passport.deserializeUser(function(id,done){
@@ -22,8 +24,6 @@ passport.use(new FacebookStrategy (secret.facebook,function(accessToken, refresh
         var newUser = new User();
         newUser.fbid = profile.id;
         newUser.name = profile.displayName;
-        newUser.email = profile._json.email;
-
         newUser.save(function(err){
           if(err) throw err;
 
